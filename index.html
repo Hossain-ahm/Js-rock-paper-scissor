@@ -15,7 +15,31 @@
             const choices = ["Rock", "Paper", "Scissors"];
             const choice = Math.floor(Math.random() * choices.length);
             return choices[choice];
-         }
+        }
+        
+        function playRound(playerSelection, computerSelection) {
+            // Normalize inputs
+            playerSelection = playerSelection.toLowerCase();
+            computerSelection = computerSelection.toLowerCase();
+
+            // Use a switch statement
+            switch (true) {
+                case playerSelection === computerSelection:
+                    return "It's a tie";
+                case (playerSelection === 'rock' && computerSelection === 'scissor'):
+                    return "You Win! Rock beats Scissor";
+                case (playerSelection === 'scissor' && computerSelection === 'paper'):
+                    return "You Win! Scissor beats Paper";
+                case (playerSelection === 'paper' && computerSelection === 'rock'):
+                    return "You Win! Paper beats Rock";
+                default:
+                    return "You Lose! " + captalise(computerSelection) + " beats " + captalise(playerSelection);
+   }
+        }
+
+        const playerSelection = "rock";
+        const computerSelection = getComputerChoice();
+        console.log(playRound(playerSelection, computerSelection));
         
     </script>
 </body>
