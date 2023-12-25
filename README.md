@@ -1,0 +1,2 @@
+# Js-rock-paper-scissor
+simple rock paper scissor game using Js
