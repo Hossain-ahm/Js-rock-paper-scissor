@@ -6,6 +6,24 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <script>
+        function captalise(word) { 
+            return word.charAt(0).toUpperCase() + word.substring(1)
+        }
+
+        function getComputerChoice(){
+            let choice = Math.floor(Math.random() * 3);
+            let hand
+            if (choice == 0){
+                hand = "Rock"
+            }else if (choice == 1){
+                hand = "Paper"
+            }else if (choice == 2){
+                hand = "Scissor"
+            }
+            return hand
+        }
+        
+    </script>
 </body>
 </html>
