@@ -9,8 +9,22 @@
     <button id = "rock">Rock</button>
     <button id = "paper">paper</button>
     <button id = "scissor">scissor</button>
+    <div id = "container">
+        <p>Let's play</p>
+    </div>
 
     <script>
+
+const buttons = document.querySelectorAll('button');
+const container = document.getElementById("container");
+const winner = document.createElement("div");
+const results = document.createElement("div");
+const overallwinner = document.createElement("div");
+const overallresults = document.createElement("div");
+
+
+let playerSelection
+
  // Function to capitalize the first letter of a word
 function capitalize(word) { 
     return word.charAt(0).toUpperCase() + word.substring(1);
@@ -31,30 +45,49 @@ function playRound(playerSelection, computerSelection) {
     
     // Use if statements to check the outcome
     if (playerSelection === computerSelection) {
-        console.log(`It's a tie of ${capitalize(computerSelection)}`);
+        winner.textContent = `It's a tie of ${capitalize(computerSelection)}`;
         return "tie";
     } else if (
         (playerSelection === "rock" && computerSelection === "scissor") ||
         (playerSelection === "scissor" && computerSelection === "paper") ||
         (playerSelection === "paper" && computerSelection === "rock")
     ) {
-        console.log(`You Win! ${capitalize(playerSelection)} beats ${capitalize(computerSelection)}`);
+        winner.textContent = `You Win! ${capitalize(playerSelection)} beats ${capitalize(computerSelection)}`;
         return "win";
     } else {
-        console.log(`You Lose! ${capitalize(computerSelection)} beats ${capitalize(playerSelection)}`);
+        winner.textContent = `You Lose! ${capitalize(computerSelection)} beats ${capitalize(playerSelection)}`;
         return "lose";
     }
 }
 
-document.getElementById("rock").addEventListener('click',function(){
-    playRound('rock',getComputerChoice())
-})
-document.getElementById("paper").addEventListener('click',function(){
-    playRound('paper',getComputerChoice())
-})
-document.getElementById("scissor").addEventListener('click',function(){
-    playRound('scissor',getComputerChoice())
-})
+let playerPoints = 0;
+let computerPoints = 0;
+buttons.forEach((button) => {
+
+    button.addEventListener("click", () => {
+        let outcome;
+        outcome = playRound(button.id,getComputerChoice())
+        if (outcome == "win") {
+            playerPoints++;
+        } else if (outcome == "lose") {
+            computerPoints++;
+        }
+        results.textContent = "player: " + playerPoints + ", computer: " + computerPoints
+        if (!(playerPoints < 5 && computerPoints < 5)){
+
+            if (playerPoints > computerPoints) {
+                overallwinner.textContent = "You win"
+                console.log("You win");
+            } else if (playerPoints < computerPoints) {
+                overallwinner.textContent  = "You lose"
+                console.log("Tie");
+            }
+            overallresults.textContent = "player: " + playerPoints + ", computer: " + computerPoints
+            playerPoints = 0;
+            computerPoints = 0;
+        }
+    })
+});
 
 // Function to run the game for a specified number of rounds (5 in this case)
 function game(){
@@ -62,8 +95,8 @@ function game(){
     let playerPoints = 0;
     let computerPoints = 0;
 
-    // Loop for 5 rounds
-    while (false) {
+    // when someone scores 5 points
+    while (playerPoints < 5 && computerPoints < 5) {
         let outcome;
         // Get user input for each round and play the round
         outcome = playRound(prompt("round " + i), getComputerChoice());
@@ -93,8 +126,12 @@ function game(){
     console.log("player: " + playerPoints + ", computer: " + computerPoints);
 }
 
+container.appendChild(winner);
+container.appendChild(results);
+container.appendChild(overallwinner)
+container.appendChild(overallresults)
 
-const playerSelection = "rock";
+
 const computerSelection = getComputerChoice();
 //console.log(playRound(playerSelection, computerSelection));
         
