@@ -46,6 +46,16 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+document.getElementById("rock").addEventListener('click',function(){
+    playRound('rock',getComputerChoice())
+})
+document.getElementById("paper").addEventListener('click',function(){
+    playRound('paper',getComputerChoice())
+})
+document.getElementById("scissor").addEventListener('click',function(){
+    playRound('scissor',getComputerChoice())
+})
+
 // Function to run the game for a specified number of rounds (5 in this case)
 function game(){
     let i = 1;
