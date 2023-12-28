@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock Paper Scissor</title>
-    <script src="js-file.js" defer></script>
+    <title>Document</title>
 </head>
 <body>
+    <button id = "rock">Rock</button>
+    <button id = "paper">paper</button>
+    <button id = "scissor">scissor</button>
+
     <script>
  // Function to capitalize the first letter of a word
 function capitalize(word) { 
@@ -50,7 +53,7 @@ function game(){
     let computerPoints = 0;
 
     // Loop for 5 rounds
-    while (true) {
+    while (false) {
         let outcome;
         // Get user input for each round and play the round
         outcome = playRound(prompt("round " + i), getComputerChoice());
