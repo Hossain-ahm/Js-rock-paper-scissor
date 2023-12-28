@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rock Paper Scissor</title>
+    <script src="js-file.js" defer></script>
 </head>
 <body>
     <script>
@@ -49,7 +50,7 @@ function game(){
     let computerPoints = 0;
 
     // Loop for 5 rounds
-    while (i < 6) {
+    while (true) {
         let outcome;
         // Get user input for each round and play the round
         outcome = playRound(prompt("round " + i), getComputerChoice());
